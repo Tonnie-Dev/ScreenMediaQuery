@@ -66,7 +66,7 @@ fun MediaQuery(comparator: DimensionsComparator, content: @Composable () -> Unit
 
     //show composable if compare() returns true
 
-    if (comparator.compare(screenWidth =screenWidth, screenHeight =screenHeight)) {
+    if (comparator.compare(screenWidth = screenWidth, screenHeight = screenHeight)) {
 
         content()
 
@@ -75,4 +75,12 @@ fun MediaQuery(comparator: DimensionsComparator, content: @Composable () -> Unit
 }
 
 
-infix fun Dimensions
+infix fun Dimensions.lessThan(value: Dp): DimensionsComparator {
+
+
+    return DimensionsComparator(
+        operator = DimensionsOperator.LessThan,
+        dimension = this,
+        value = value
+    )
+}
