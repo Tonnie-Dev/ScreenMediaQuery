@@ -84,3 +84,14 @@ infix fun Dimensions.lessThan(value: Dp): DimensionsComparator {
         value = value
     )
 }
+
+infix fun Dimensions.greaterThan(value: Dp): DimensionsComparator {
+
+
+    return DimensionsComparator(
+        operator = DimensionsOperator.GreaterThan,
+        dimension = this,
+        value = value
+    )
+}
+
