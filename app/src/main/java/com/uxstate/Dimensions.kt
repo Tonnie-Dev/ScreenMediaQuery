@@ -8,19 +8,19 @@ sealed class Dimensions {
     object Height : Dimensions()
 
 
-    //how to compare values
-    sealed class DimensionsOperator {
-
-
-        object LessThan : DimensionsOperator()
-        object GreaterThan : DimensionsOperator()
-    }
 
 
 }
+//how to compare values
+sealed class DimensionsOperator {
+
+
+    object LessThan : DimensionsOperator()
+    object GreaterThan : DimensionsOperator()
+}
 
     class DimensionsComparator(
-        val operator: Dimensions.DimensionsOperator,
+        val operator: DimensionsOperator,
         private val dimension: Dimensions,
         val value: Dp
 
