@@ -10,20 +10,22 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.uxstate.Dimensions
+import com.uxstate.MediaQuery
+import com.uxstate.lessThan
 import com.uxstate.screenmediaquery.ui.theme.ScreenMediaQueryTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ScreenMediaQueryTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+            
+            /*and only if this condition is not true will the content inside be shown*/
+            MediaQuery(comparator = Dimensions.Width lessThan 400.dp) {
+                
+                Text(text = "I'm only shown below a width of 400.dp")
+                
             }
         }
     }
