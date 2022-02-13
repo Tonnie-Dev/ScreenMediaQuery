@@ -23,7 +23,8 @@ class MainActivity : ComponentActivity() {
             
             /*and only if this condition is not true will the content inside be shown*/
             MediaQuery(comparator = Dimensions.Width lessThan 400.dp) {
-                
+
+                //shown on portrait, absen on landscape
                 Text(text = "I'm only shown below a width of 400.dp")
                 
             }
