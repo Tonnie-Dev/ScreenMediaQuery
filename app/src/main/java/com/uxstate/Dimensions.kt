@@ -16,8 +16,11 @@ sealed class Dimensions {
         object GreaterThan : DimensionsOperator()
     }
 
+
+}
+
     class DimensionsComparator(
-        val operator: DimensionsOperator,
+        val operator: Dimensions.DimensionsOperator,
         private val dimension: Dimensions,
         val value: Dp
 
@@ -25,5 +28,25 @@ sealed class Dimensions {
         /*Here we want to check the width(i.e. Dimension)
         is less than (i.e. DimensionsOperator)
         400.dp (i.e. the value)*/
-    )
-}
+    ){
+
+        fun compare(screenWidth: Dp, screenHeight: Dp): Boolean {
+
+            //check Dimen width
+            return if (dimension is Dimensions.Width){
+                when(operator){
+                    is Dimensions.DimensionsOperator.GreaterThan -> screenWidth > value
+                    is  Dimensions.DimensionsOperator.LessThan -> screenWidth <value
+                }
+
+                //Else check height
+            }else{
+
+                when(operator){
+
+                    is Dimensions.DimensionsOperator.GreaterThan -> screenHeight> value
+                    is Dimensions.DimensionsOperator.LessThan -> screenHeight<value
+                }
+            }
+        }
+    }
